@@ -1,7 +1,7 @@
 <template>
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
-      <input type="text" placeholder="Search for a city or state"
+      <input type="text" placeholder="Αναζήτηση πόλης"
         v-model="searchQuery"
         @input="getSearchResults"
         class="py-2 px-1 w-full bg-transparent border-b 

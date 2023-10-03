@@ -5,7 +5,7 @@
             <RouterLink :to="{name: 'home'}">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-sun text-2xl"></i>
-                    <p class="text-2xl">The Local Weather</p>
+                    <p class="text-2xl">Ο καιρός</p>
                 </div>
             </RouterLink>
 
@@ -19,33 +19,49 @@
 
             <BaseModal :modalActive="modalActive" @close-modal="toggeModal">
                 <div class="text-black">
-                <h1 class="text-2xl mb-1">About:</h1>
+                <h1 class="text-2xl mb-1">Σχετικά:</h1>
                 <p class="mb-4">
-                    The Local Weather allows you to track the current and
-                    future weather of cities of your choosing.
+                    Η εφαρμογή του καιρού σας προσφέρει τη δυνατότητα να 
+                    δείτε τον τωρινό και μελλοντικό καιρό σε πόλεις της 
+                    επιλογής σας.
+                    <!-- The Local Weather allows you to track the current and
+                    future weather of cities of your choosing. -->
                 </p>
-                <h2 class="text-2xl">How it works:</h2>
+                <h2 class="text-2xl">Πως λειτουργεί:</h2>
                 <ol class="list-decimal list-inside mb-4">
                     <li>
-                    Search for your city by entering the name into the
-                    search bar.
+                    Ψάξτε για μια πόλη πληκτρολογόντας το όνομά της στη
+                    μπάρα αναζήτησης.
+                    <!-- Search for your city by entering the name into the
+                    search bar. -->
                     </li>
                     <li>
-                    Select a city within the results, this will take
-                    you to the current weather for your selection.
+                    Διαλέξτε την πόλη απο το αποτελέσματα και θα
+                    μεταφερθείτε στη σελίδα του καιρού για την πόλη
+                    της επιλογής σας.
+                    <!-- Select a city within the results, this will take
+                    you to the current weather for your selection. -->
                     </li>
                     <li>
-                    Track the city by clicking on the "+" icon in the
+                    Παρακολουθήστε την πόλη κάνοντας κλικ στο εικονίδιο
+                    "+" στην πάνω δεξιά μεριά της οθόνης. Με αυτό τον
+                    τρόπο θα αποθηκεύσετε την πόλη ώστε να την δείτε
+                    αργότερα απο την κεντρική σελίδα.
+                    <!-- Track the city by clicking on the "+" icon in the
                     top right. This will save the city to view at a
-                    later time on the home page.
+                    later time on the home page. -->
                     </li>
                 </ol>
 
-                <h2 class="text-2xl">Removing a city</h2>
+                <h2 class="text-2xl">Διαγραφή Πόλης</h2>
                 <p>
-                    If you no longer wish to track a city, simply select
+                    Αν δεν θέλετε να παρακολουθείτε πλέον κάποια πόλη,
+                    απλά διαλέξτε την πόλη στην κεντρική σελίδα. Στο 
+                    κάτω μέρος της σελίδας υπάρχη επιλογή για διαγραφή
+                    της πόλης.
+                    <!-- If you no longer wish to track a city, simply select
                     the city within the home page. At the bottom of the
-                    page, there will be am option to delete the city.
+                    page, there will be am option to delete the city. -->
                 </p>
                 </div>
             </BaseModal>
