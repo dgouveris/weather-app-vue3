@@ -29,11 +29,11 @@
                 }}
             </p>
             <p class="text-8xl mb-8">
-                {{ tempCelcius  }}&deg;
+                {{ calculateCelciusTemp(weatherData.current.temp)  }}&deg;
             </p>
             <p>
                 Αίσθηση
-                {{ tempFeelsLikeCelcius  }}&deg;
+                {{ calculateCelciusTemp(weatherData.current.feels_like)  }}&deg;
             </p>
             <p class="capitalize"> 
                 {{ weatherData.current.weather[0].description  }}
@@ -53,7 +53,63 @@
         <div class="max-w-screen-md w-full py-12">
             <div class="mx-8 text-white">
                 <h2 class="mb-4">Ωριαίος Καιρός</h2>
-                <div class="flex gap-10 overflow-x-scroll"></div>
+                <div class="flex gap-10 overflow-x-scroll">
+                    <div v-for="hourData in weatherData.hourly" :key="hourData.dt"
+                    class="flex flex-col gap-4 items-center">
+                        <p class="whitespace-nowrap text-md">
+                            {{ 
+                                new Date(
+                                    hourData.currentTime
+                                ).toLocaleTimeString("el-GR",{
+                                    hour: "numeric"
+                                }) 
+                            }}
+                        </p>
+                        <img
+                            class="w-auto h-[50px] object-cover"
+                            :src="
+                            `http://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`
+                            "
+                            alt=""
+                        />
+                        <p class="text-xl">
+                            {{ calculateCelciusTemp(hourData.temp) }}&deg;
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-white border-opacity-10 border w-full" />
+
+        <!-- Weekly Weather-->
+        <div class="max-w-screen-md w-full py-12">
+            <div class="mx-8 text-white">
+                <h2 class="mb-4">Πρόγνωση 7 ημερών</h2>
+                <div v-for="day in weatherData.daily" :key="day.dt"
+                    class="flex items-center">
+                    <p class="flex-1">
+                        {{
+                        new Date(day.dt * 1000).toLocaleDateString(
+                            "el-GR",
+                            {
+                            weekday: "long",
+                            }
+                        )
+                        }}
+                    </p>
+                    <img
+                        class="w-[50px] h-[50px] object-cover"
+                        :src="
+                        `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`
+                        "
+                        alt=""
+                    />
+                    <div class="flex gap-2 flex-1 justify-end">
+                        <p>Μ: {{ calculateCelciusTemp(day.temp.max) }}</p>
+                        <p>Ε: {{ calculateCelciusTemp(day.temp.min) }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -92,6 +148,7 @@ const getWeatherData = async () => {
 };
 const weatherData = await getWeatherData();
 console.log(weatherData);
-const tempCelcius = (((Math.round(weatherData.current.temp)-32)*5)/9).toFixed(0);
-const tempFeelsLikeCelcius = (((Math.round(weatherData.current.temp)-32)*5)/9).toFixed(0);
+const calculateCelciusTemp = (temperature) => {
+    return (((Math.round(temperature)-32)*5)/9).toFixed(0);
+};
 </script>
